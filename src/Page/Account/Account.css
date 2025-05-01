@@ -1,0 +1,50 @@
+.title {
+  color: #090909;
+  text-align: center;
+  font-size: 50px;
+}
+
+.login-title {
+  background-color: #837d7d7c;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login {
+  font-size: 400px;
+}
+
+.login2 {
+  font-size: 440px;
+  margin-top: 20px;
+  margin-left: 40px;
+}
+
+.info-login {
+  width: 300px;
+  height: 380px;
+  background-color: #eee9e9;
+  border-radius: 20px;
+  margin-top: 70px;
+  margin-right: 40px;
+}
+
+.button-login {
+  display: block;
+  margin-top: 30px;
+  width: 200px;
+  height: 20px;
+}
+
+.register-login {
+  display: block;
+  margin-top: 28px;
+}
+
+.fix-login {
+  margin-left: 20px;
+  border-radius: 4px;
+  width: 240px;
+  height: 28px;
+}
