@@ -10,7 +10,7 @@ function DefaultLayout({ children }) {
       <div className="Include-Header">
         <Header />
       </div>
-      <div>{children}</div>
+      <div className="container-children">{children}</div>
       <div>
         <Footer />
       </div>

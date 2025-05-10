@@ -1,7 +1,7 @@
 import Button from "../../components/Button.js";
 import { Link } from "react-router-dom";
-import { AiFillPicture } from "react-icons/ai";
-
+import images from "../../asset/image";
+import Categoryleft from "../../components/Categoryleft.js";
 import "./Category.css";
 
 const CategoryArray = [
@@ -11,44 +11,60 @@ const CategoryArray = [
   "7만원 ~ 10만원",
 ];
 
+const array = [
+  {
+    id: 1,
+    name: "의류",
+    list: [
+      {
+        id: 1,
+        name: "상의",
+        image: images.noImage,
+      },
+      {
+        id: 2,
+        name: "하의",
+        image: images.noImage,
+      },
+      {
+        id: 3,
+        name: "신발",
+        image: images.noImage,
+      },
+    ],
+  },
+];
+
+// get params in url
+// compare to array
+// get list of array
+// render list of array
+
+// <Component name={name} list={list}/>
+// <div>
+//   <h2>{name}</h2>
+//   <div className="Category-product">
+//     {list.map((item) => (
+//       <div key={item.id} className="Category-product-item">{item.name}</div>
+//     ))}
+//   </div>
+// </div>
+
 function Category() {
   return (
     <>
       <Button />
       <div className="Category-title">
         <div className="Category-left">
-          <h2 className="left-price">가격대</h2>
-          {CategoryArray.map((item, index) => (
-            <Link to={`/category/${index}`} key={index}>
-              <button type="button" className="Category-button">
-                {item}
-              </button>
-            </Link>
-          ))}
-          <div className="Category-button-min-title">
-            <Link to="">
-              <button type="button" className="Category-button-min">
-                Min :
-              </button>
-            </Link>
-            <input type="text" className="Category-text-min"></input>
-          </div>
-          <div className="Category-button-max-title">
-            <Link to="">
-              <button type="button" className="Category-button-max">
-                Max :
-              </button>
-            </Link>
-            <input type="text" className="Category-text-max"></input>
-          </div>
+          <Categoryleft />
         </div>
         <div className="Category-right">
           <h2 className="category-right-title">상품 목력</h2>
           <div className="Category-product">
-            <AiFillPicture />
-            <AiFillPicture />
-            <AiFillPicture />
-            <AiFillPicture />
+            <img src={images.noImage} className="category-product-image" />
+            <img src={images.noImage} className="category-product-image" />
+            <img src={images.noImage} className="category-product-image" />
+            <img src={images.noImage} className="category-product-image" />
           </div>
         </div>
       </div>

@@ -6,15 +6,22 @@
   display: flex;
   background-color: silver;
   border-radius: 8px;
-  width: 48%;
+  max-width: 460px;
+  width: 78%;
   justify-content: flex-end;
 }
 .card {
-  margin-right: 10px;
+}
+.shopping-product-container-parent {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 .shopping-product-container {
+  max-width: 1300px;
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: rgb(192, 192, 192);
   border-radius: 20px;
 }
@@ -23,13 +30,15 @@
   width: 90%;
 }
 .product-info {
-  width: 90%;
+  max-width: 1200px;
+  width: 70%;
   display: flex;
   border-radius: 12px;
 }
 .product-img {
-  font-size: 160px;
-  border-radius: 20px;
+  max-width: 400px;
+  width: 60%;
+  border-radius: 8px;
 }
 .product-details {
   width: 90%;
@@ -42,6 +51,8 @@
   justify-content: space-between;
 }
 .product-name-delete {
+  max-width: 40px;
+  width: 20%;
   color: #151414;
   border: none;
   outline: none;
@@ -49,12 +60,15 @@
 }
 .product-name-delete:hover {
   color: #726f6f;
+  font-weight: bold;
+  cursor: pointer;
 }
 .shopping-product-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 30%;
+  padding: 8px;
   margin-right: 8px;
   border-left: 2px solid black;
 }
@@ -78,13 +92,27 @@
 .shopping-right-product-price {
   text-align: right;
 }
+
 .shopping-button {
-  width: 220px;
+  max-width: 280px;
+  width: 80%;
   height: 40px;
-  margin-left: 20px;
+  margin-left: 34px;
   margin-bottom: 20px;
 }
 .shopping-button:hover {
   background-color: #726f6f;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .shopping-product-container {
+    flex-direction: column;
+  }
+  .product-info {
+    flex-direction: column;
+  }
+  .shopping-card {
+    display: none;
+  }
 }

@@ -3,46 +3,26 @@ function Footer() {
     <div className="footer">
       <div className="footer-1">
         <h1>
-          <a href="">데미안</a>
+          <a href="/home">데미안</a>
         </h1>
       </div>
       <div className="footer-2">
         <p>
-          <a href="">Let's Shopping</a>
+          <a href="/home">Let's Shopping</a>
         </p>
       </div>
       <div className="footer-3">
         <p>
-          <a href="">Home</a>
+          <a href="/home">Home</a>
         </p>
         <p>
-          <a href="">Category</a>
+          <a href="/category">Category</a>
         </p>
         <p>
-          <a href="">My Shopping</a>
+          <a href="shopping">My Shopping</a>
         </p>
         <p>
-          <a href="">Shopping cart</a>
-        </p>
-        <p>
-          <a href="">Login</a>
-        </p>
-      </div>
-      <div className="footer-4">
-        <p>
-          <a href="">Contact</a>
-        </p>
-        <p>
-          <a href="">Facebook</a>
-        </p>
-        <p>
-          <a href="">Instagram</a>
-        </p>
-        <p>
-          <a href="">Kakaotalk</a>
-        </p>
-        <p>
-          <a href="">Twister</a>
+          <a href="/account">Login</a>
         </p>
       </div>
     </div>
