@@ -81,7 +81,7 @@ body {
   text-wrap: nowrap;
 }
 .Button:hover {
-  background-color: #bd82dd87;
+  background-color: rgb(165, 168, 170);
 }
 
 /* css of Productlist.js  */
@@ -170,7 +170,7 @@ body {
 
 .footer a:hover {
   display: block;
-  color: violet;
+  color: rgb(165, 168, 170);
   text-decoration: underline;
 }
 

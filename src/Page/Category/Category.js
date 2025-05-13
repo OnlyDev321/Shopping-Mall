@@ -61,10 +61,26 @@ function Category() {
         <div className="Category-right">
           <h2 className="category-right-title">상품 목력</h2>
           <div className="Category-product">
+            <div className="category-product-info">
             <img src={images.noImage} className="category-product-image" />
+            <p className="category-product-name">상품 이름</p>
+            <p className="category-product-price">상품 가격</p>
+            </div>
+            <div className="category-product-info">
             <img src={images.noImage} className="category-product-image" />
+            <p className="category-product-name">상품 이름</p>
+            <p className="category-product-price">상품 가격</p>
+            </div>
+            <div className="category-product-info">
             <img src={images.noImage} className="category-product-image" />
+            <p className="category-product-name">상품 이름</p>
+            <p className="category-product-price">상품 가격</p>
+            </div>
+            <div className="category-product-info">
             <img src={images.noImage} className="category-product-image" />
+            <p className="category-product-name">상품 이름</p>
+            <p className="category-product-price">상품 가격</p>
+            </div>
           </div>
         </div>
       </div>
