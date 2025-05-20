@@ -9,21 +9,22 @@ import { useNavigate } from "react-router-dom";
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
 import { useState } from "react";
+import { categories } from "../configs/ui-config/categoryData";
 function Header() {
   const [visibe, setVisible] = useState(false);
   return (
     <header className="header">
       {/* left-side */}
       <div className="left-side">
-        <Link to="" className="Link-css">
+        {/* <Link to="" className="Link-css">
           <FaArrowLeft></FaArrowLeft>
-        </Link>
+        </Link> */}
         <Link to="/home" className="Link-css">
           <IoHome></IoHome>
         </Link>
-        <Link to="" className="Link-css">
+        {/* <Link to="" className="Link-css">
           <FaArrowRight></FaArrowRight>
-        </Link>
+        </Link> */}
       </div>
       {/* Right-side */}
       <div className="right-side">
@@ -35,31 +36,21 @@ function Header() {
           render={(attrs) => (
             <div className="box" tabIndex="-1" {...attrs}>
               <div className="menu" onClick={() => setVisible(false)}>
-                <Link to="/category" className="Link-css">
-                  <span className="menu-item">의류</span>
-                </Link>
-                <Link to="/category" className="Link-css">
-                  <span className="menu-item">전자제품</span>
-                </Link>
-                <Link to="/category" className="Link-css">
-                  <span className="menu-item">가공식품</span>
-                </Link>
-                <Link to="/category" className="Link-css">
-                  <span className="menu-item">책</span>
-                </Link>
-                <Link to="/category" className="Link-css">
-                  <span className="menu-item">신발</span>
-                </Link>
+                {categories.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={`/category/${item.name}`}
+                    className="Link-css"
+                  >
+                    <span className="menu-item">{item.name}</span>
+                  </Link>
+                ))}
               </div>
             </div>
           )}
         >
           <div onMouseEnter={() => setVisible(true)}>
-            <Link
-              className="Link-css"
-              to="/category"
-              onClick={() => setVisible(false)}
-            >
+            <Link className="Link-css" onClick={() => setVisible(false)}>
               <BiSolidCategory></BiSolidCategory>
             </Link>
           </div>

@@ -53,7 +53,7 @@ function App() {
           }
         />
         <Route
-          path="/category"
+          path="/category/:type"
           element={
             <DefaultLayout>
               <Category />

@@ -249,3 +249,10 @@ body {
 .menu .menu-item:hover {
   background-color: #f0f0f0;
 }
+
+
+@media (max-width: 768px){
+  .footer{
+    display: none;
+  }
+}
