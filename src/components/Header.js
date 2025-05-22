@@ -8,10 +8,19 @@ import { MdAccountCircle } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { categories } from "../configs/ui-config/categoryData";
+
 function Header() {
   const [visibe, setVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if user is logged in by checking localStorage
+    const currentUser = localStorage.getItem("currentUser");
+    setIsLoggedIn(!!currentUser);
+  }, []);
+
   return (
     <header className="header">
       {/* left-side */}
@@ -55,9 +64,11 @@ function Header() {
             </Link>
           </div>
         </Tippy>
-        <Link to="/shopping" className="Link-css">
-          <MdShoppingCart></MdShoppingCart>
-        </Link>
+        {isLoggedIn && (
+          <Link to="/shopping" className="Link-css">
+            <MdShoppingCart />
+          </Link>
+        )}
         <Link to="/account" className="Link-css">
           <MdAccountCircle></MdAccountCircle>
         </Link>

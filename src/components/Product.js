@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useSearchParams } from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 
 function Product() {
   const [book, setBook] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
+  const { addToCart } = useContext(CartContext);
 
   const id = searchParams.get("id");
   console.log(id);
@@ -24,9 +26,11 @@ function Product() {
         console.error(err);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
 
   console.log(book);
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div className="Product-title">
       <div className="product-info-left">
@@ -35,8 +39,12 @@ function Product() {
       <div className="product-info-right">
         <h3>{book.title}</h3>
         <h2 className="product-price2">{book.price}</h2>
-        <button type="button" className="info-button">
-          구매하기
+        <button
+          type="button"
+          className="info-button"
+          onClick={() => addToCart(book)}
+        >
+          장바구니 담기
         </button>
         <h3>제품에 대한 상세 설명</h3>
         <p className="product-font">{book.description}</p>

@@ -6,70 +6,72 @@ import Category from "./Page/Category/Category.js";
 import Shopping from "./Page/Shopping-card/Shopping.js";
 import Register from "./components/Register.js";
 import Product from "./components/Product.js";
+import { CartProvider } from "./context/CartContext.js";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route
-          path=""
-          element={
-            <DefaultLayout>
-              <Home />
-            </DefaultLayout>
-          }
-        />
-
-        <Route
-          path="/home"
-          element={
-            <DefaultLayout>
-              <Home />
-            </DefaultLayout>
-          }
-        />
-        <Route
-          path="/account"
-          element={
-            <DefaultLayout>
-              <Account />
-            </DefaultLayout>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <DefaultLayout>
-              <Register />
-            </DefaultLayout>
-          }
-        />
-        <Route
-          path="/product-detail"
-          element={
-            <DefaultLayout>
-              <Product />
-            </DefaultLayout>
-          }
-        />
-        <Route
-          path="/category/:type"
-          element={
-            <DefaultLayout>
-              <Category />
-            </DefaultLayout>
-          }
-        />
-        <Route
-          path="/shopping"
-          element={
-            <DefaultLayout>
-              <Shopping />
-            </DefaultLayout>
-          }
-        />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Routes>
+          <Route
+            path=""
+            element={
+              <DefaultLayout>
+                <Home />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            path="/home"
+            element={
+              <DefaultLayout>
+                <Home />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              <DefaultLayout>
+                <Account />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <DefaultLayout>
+                <Register />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            path="/product-detail"
+            element={
+              <DefaultLayout>
+                <Product />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            path="/category/:type"
+            element={
+              <DefaultLayout>
+                <Category />
+              </DefaultLayout>
+            }
+          />
+          <Route
+            path="/shopping"
+            element={
+              <DefaultLayout>
+                <Shopping />
+              </DefaultLayout>
+            }
+          />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 

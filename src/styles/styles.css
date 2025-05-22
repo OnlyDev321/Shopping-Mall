@@ -151,6 +151,11 @@ body {
   border-radius: 10rem;
   text-align: center;
 }
+.left-button:hover,
+.right-button:hover {
+  cursor: pointer;
+  background-color: #33333399;
+}
 
 /* css of Footer.js */
 .footer {
@@ -215,6 +220,7 @@ body {
 }
 .info-button:hover {
   background-color: #33333399;
+  cursor: pointer;
 }
 .product-price2 {
   font-size: 30px;
@@ -250,9 +256,8 @@ body {
   background-color: #f0f0f0;
 }
 
-
-@media (max-width: 768px){
-  .footer{
+@media (max-width: 768px) {
+  .footer {
     display: none;
   }
 }

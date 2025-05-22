@@ -17,6 +17,8 @@ function Category() {
   const [category, setCategory] = useState({});
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const ITEMS_PER_PAGE = 4;
 
   useEffect(() => {
     const categoryData = categories.find((item) => item.name === type);
@@ -36,7 +38,7 @@ function Category() {
           throw new Error("Network response was not ok");
         }
         const data = await response.json();
-        setProducts(data.books.slice(0, 4));
+        setProducts(data.books);
       } catch (error) {
         console.error("Error fetching products:", error);
       } finally {
@@ -50,6 +52,21 @@ function Category() {
   const handleFilter = (filterValue) => {
     navigate(`?filter=${encodeURIComponent(filterValue)}`);
   };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => Math.max(0, prev - ITEMS_PER_PAGE));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) =>
+      Math.min(products.length - ITEMS_PER_PAGE, prev + ITEMS_PER_PAGE)
+    );
+  };
+
+  const visibleProducts = products.slice(
+    currentIndex,
+    currentIndex + ITEMS_PER_PAGE
+  );
 
   if (loading) {
     return <div>Loading...</div>;
@@ -65,7 +82,14 @@ function Category() {
         <div className="Category-right">
           <h2 className="category-right-title">상품 목록</h2>
           <div className="Category-product">
-            {products.map((product) => (
+            <button
+              className="category-left-button"
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+            >
+              ◀
+            </button>
+            {visibleProducts.map((product) => (
               <div key={product.id} className="category-product-info">
                 <a
                   className="productCard"
@@ -84,6 +108,9 @@ function Category() {
                 </a>
               </div>
             ))}
+            <button className="category-right-button" onClick={handleNext}>
+              ▶
+            </button>
           </div>
         </div>
       </div>

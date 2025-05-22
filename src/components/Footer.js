@@ -1,4 +1,14 @@
+import { useState, useEffect } from "react";
+
 function Footer() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if user is logged in by checking localStorage
+    const currentUser = localStorage.getItem("currentUser");
+    setIsLoggedIn(!!currentUser);
+  }, []);
+
   return (
     <div className="footer">
       <div className="footer-1">
@@ -16,11 +26,13 @@ function Footer() {
           <a href="/home">Home</a>
         </p>
         <p>
-          <a href="/category">Category</a>
+          <a href="/category/의류">Category</a>
         </p>
-        <p>
-          <a href="shopping">My Shopping</a>
-        </p>
+        {isLoggedIn && (
+          <p>
+            <a href="/shopping">My Shopping</a>
+          </p>
+        )}
         <p>
           <a href="/account">Login</a>
         </p>
