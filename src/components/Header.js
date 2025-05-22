@@ -14,12 +14,21 @@ import { categories } from "../configs/ui-config/categoryData";
 function Header() {
   const [visibe, setVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if user is logged in by checking localStorage
     const currentUser = localStorage.getItem("currentUser");
     setIsLoggedIn(!!currentUser);
   }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("currentUser");
+    setIsLoggedIn(false);
+    navigate("/home");
+    window.location.reload();
+  };
 
   return (
     <header className="header">
@@ -69,9 +78,28 @@ function Header() {
             <MdShoppingCart />
           </Link>
         )}
-        <Link to="/account" className="Link-css">
-          <MdAccountCircle></MdAccountCircle>
-        </Link>
+        <div
+          className="account-container"
+          onMouseEnter={() => setShowAccountMenu(true)}
+          onMouseLeave={() => setShowAccountMenu(false)}
+        >
+          {isLoggedIn ? (
+            <span className="Link-css" style={{ cursor: "pointer" }}>
+              <MdAccountCircle />
+            </span>
+          ) : (
+            <Link to="/account" className="Link-css">
+              <MdAccountCircle />
+            </Link>
+          )}
+          {isLoggedIn && showAccountMenu && (
+            <div className="account-dropdown">
+              <button onClick={handleSignOut} className="sign-out-btn">
+                Sign out
+              </button>
+            </div>
+          )}
+        </div>
         {/* category icon */}
       </div>
     </header>

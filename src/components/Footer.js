@@ -33,9 +33,11 @@ function Footer() {
             <a href="/shopping">My Shopping</a>
           </p>
         )}
-        <p>
-          <a href="/account">Login</a>
-        </p>
+        {!isLoggedIn && (
+          <p>
+            <a href="/account">Login</a>
+          </p>
+        )}
       </div>
     </div>
   );
