@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import { IoHome } from "react-icons/io5";
-import { FaArrowLeft } from "react-icons/fa6";
-import { FaArrowRight } from "react-icons/fa6";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdShoppingCart } from "react-icons/md";
 import { MdAccountCircle } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import Tippy from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { categories } from "../configs/ui-config/categoryData";
+import { CartContext } from "../context/CartContext";
+import "../styles/Header.css";
 
 function Header() {
   const [visibe, setVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const navigate = useNavigate();
+  const { cart } = useContext(CartContext);
+
+  const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     // Check if user is logged in by checking localStorage
@@ -32,17 +35,10 @@ function Header() {
 
   return (
     <header className="header">
-      {/* left-side */}
       <div className="left-side">
-        {/* <Link to="" className="Link-css">
-          <FaArrowLeft></FaArrowLeft>
-        </Link> */}
         <Link to="/home" className="Link-css">
           <IoHome></IoHome>
         </Link>
-        {/* <Link to="" className="Link-css">
-          <FaArrowRight></FaArrowRight>
-        </Link> */}
       </div>
       {/* Right-side */}
       <div className="right-side">
@@ -74,8 +70,9 @@ function Header() {
           </div>
         </Tippy>
         {isLoggedIn && (
-          <Link to="/shopping" className="Link-css">
+          <Link to="/shopping" className="Link-css cart-icon-container">
             <MdShoppingCart />
+            {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
           </Link>
         )}
         <div
@@ -100,7 +97,6 @@ function Header() {
             </div>
           )}
         </div>
-        {/* category icon */}
       </div>
     </header>
   );

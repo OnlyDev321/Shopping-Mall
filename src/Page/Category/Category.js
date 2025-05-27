@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Button from "../../components/Button.js";
 import images from "../../asset/image";
 import Categoryleft from "../../components/Categoryleft.js";
-
+import { FaCaretLeft } from "react-icons/fa6";
+import { FaCaretRight } from "react-icons/fa";
 import "./Category.css";
 import { categories } from "../../configs/ui-config/categoryData.js";
 
@@ -87,7 +88,7 @@ function Category() {
               onClick={handlePrev}
               disabled={currentIndex === 0}
             >
-              ◀
+              <FaCaretLeft className="category-left-icon" />
             </button>
             {visibleProducts.map((product) => (
               <div key={product.id} className="category-product-info">
@@ -109,7 +110,7 @@ function Category() {
               </div>
             ))}
             <button className="category-right-button" onClick={handleNext}>
-              ▶
+              <FaCaretRight className="category-right-icon" />
             </button>
           </div>
         </div>

@@ -66,7 +66,7 @@ function Account() {
           >
             Sign In
           </button>
-          <Link to="/register" className="register-login fix-login">
+          <Link to="/register" className="Link-css register-login fix-login">
             For Register?
           </Link>
         </div>

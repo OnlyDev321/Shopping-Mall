@@ -87,13 +87,22 @@
 }
 .category-left-button,
 .category-right-button {
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 10rem;
   border-radius: 50%;
-  font-size: 100%;
+  margin-bottom: 60px;
   align-self: center;
   cursor: pointer;
+}
+.category-left-icon {
+  font-size: 20px;
+  margin-top: 2px;
+}
+.category-right-icon {
+  font-size: 20px;
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
 @media (max-width: 768px) {

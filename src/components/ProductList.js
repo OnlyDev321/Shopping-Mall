@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { FaCaretLeft } from "react-icons/fa";
+import { FaCaretRight } from "react-icons/fa";
 const ITEMS_PER_PAGE = 4;
 function ProductList_withbutton() {
   const [books, setBooks] = useState([]);
@@ -44,7 +46,7 @@ function ProductList_withbutton() {
     <div className="carousel-wrapper">
       <ul className="products">
         <button className="left-button" onClick={handlePrev}>
-          ◀
+          <FaCaretLeft className="icon-button-left" />
         </button>
         {visibleProducts.map((book) => (
           <li className="product" key={book.id}>
@@ -68,7 +70,7 @@ function ProductList_withbutton() {
           </li>
         ))}
         <button className="right-button" onClick={handleNext}>
-          ▶
+          <FaCaretRight className="icon-button-right" />
         </button>
       </ul>
     </div>

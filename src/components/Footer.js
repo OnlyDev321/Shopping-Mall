@@ -13,29 +13,41 @@ function Footer() {
     <div className="footer">
       <div className="footer-1">
         <h1>
-          <a href="/home">데미안</a>
+          <a classname="footer-css" href="/home">
+            데미안
+          </a>
         </h1>
       </div>
       <div className="footer-2">
         <p>
-          <a href="/home">Let's Shopping</a>
+          <a classname="footer-css" href="/home">
+            Let's Shopping
+          </a>
         </p>
       </div>
       <div className="footer-3">
         <p>
-          <a href="/home">Home</a>
+          <a classname="footer-css" href="/home">
+            Home
+          </a>
         </p>
         <p>
-          <a href="/category/의류">Category</a>
+          <a classname="footer-css" href="/category/의류">
+            Category
+          </a>
         </p>
         {isLoggedIn && (
           <p>
-            <a href="/shopping">My Shopping</a>
+            <a classname="footer-css" href="/shopping">
+              My Shopping
+            </a>
           </p>
         )}
         {!isLoggedIn && (
           <p>
-            <a href="/account">Login</a>
+            <a classname="footer-css" href="/account">
+              Login
+            </a>
           </p>
         )}
       </div>
