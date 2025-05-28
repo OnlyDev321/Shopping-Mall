@@ -7,8 +7,27 @@ import Shopping from "./Page/Shopping-card/Shopping.js";
 import Register from "./components/Register.js";
 import Product from "./components/Product.js";
 import { CartProvider } from "./context/CartContext.js";
+import {useEffect,useState} from "react";
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    useEffect(() => {
+        // 로그인 상태 확인 API 호출
+        fetch("http://localhost:8000/auth/protected", {
+            credentials: "include",
+        })
+            .then((res) => res.ok ? res.json() : null)
+            .then((data) => {
+                if (data) {
+                    setIsLoggedIn(true);
+                } else {
+                    setIsLoggedIn(false);
+                }
+            })
+            .catch((err) => {
+                console.error("로그인 상태 확인 실패:", err);
+            });
+    }, []);
   return (
     <CartProvider>
       <Router>
@@ -16,7 +35,7 @@ function App() {
           <Route
             path=""
             element={
-              <DefaultLayout>
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
                 <Home />
               </DefaultLayout>
             }
@@ -24,7 +43,7 @@ function App() {
           <Route
             path="/home"
             element={
-              <DefaultLayout>
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
                 <Home />
               </DefaultLayout>
             }
@@ -32,15 +51,15 @@ function App() {
           <Route
             path="/account"
             element={
-              <DefaultLayout>
-                <Account />
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
+                <Account setIsLoggedIn={setIsLoggedIn}/>
               </DefaultLayout>
             }
           />
           <Route
             path="/register"
             element={
-              <DefaultLayout>
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
                 <Register />
               </DefaultLayout>
             }
@@ -48,7 +67,7 @@ function App() {
           <Route
             path="/product-detail"
             element={
-              <DefaultLayout>
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
                 <Product />
               </DefaultLayout>
             }
@@ -56,7 +75,7 @@ function App() {
           <Route
             path="/category/:type"
             element={
-              <DefaultLayout>
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
                 <Category />
               </DefaultLayout>
             }
@@ -64,7 +83,7 @@ function App() {
           <Route
             path="/shopping"
             element={
-              <DefaultLayout>
+              <DefaultLayout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}>
                 <Shopping />
               </DefaultLayout>
             }
